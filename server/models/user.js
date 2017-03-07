@@ -5,7 +5,8 @@ var crypto = require('crypto');
 // Write you user database model methods here
 
 var insertId = function(userParams) { 
-  console.log('addUser model');
+  // console.log('addUser model');
+
   var shasum = crypto.createHash('sha1');
   shasum.update(userParams[1]);
   userParams[1] = shasum.digest('hex');
@@ -15,6 +16,9 @@ var insertId = function(userParams) {
 };
 
 var findUser = function(userParams) {
+  var shasum = crypto.createHash('sha1');
+  shasum.update(userParams[1]);
+  userParams[1] = shasum.digest('hex');
   var queryString = 'SELECT * FROM users\
                       WHERE username = ? AND password = ?';
   return db.queryAsync(queryString, userParams);

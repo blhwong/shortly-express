@@ -95,11 +95,13 @@ function(req, res) {
       if (data[0].length) {
         // password match
         console.log('password match');
-        res.status(201).send('access granted');
+        // res.status(201).send('access granted');
+        res.redirect('/');
       } else {
         console.log('password not matching'); // ideally separate for users not in system sending to signup and match incorrect
-        res.status(201).render('login');
+        // res.status(201).render('login');
         // alert('Password not matching');
+        res.redirect('/login');
       }
     })
     .catch(function(err) {
@@ -115,16 +117,18 @@ function(req, res) {
 
 app.post('/signup', 
 function(req, res) {
-  console.log(req.body);
+  // console.log(req.body);
   // TO DO HASH PASSWORD BEFORE STORING
   return Users.insertId([req.body.username, req.body.password])
     .then(function(data) {
-      var userinfo = data[0];
-      res.status(201).send('you just signed up!');
+      // var userinfo = data[0];
+      // res.status(201).send('you just signed up!');
+      res.redirect('/');
     })
     .catch(function(err) {
       console.log('Error!'); // TO DO
-      res.status(200).send('user already taken');
+      // res.status(200).send('user already taken');
+      res.redirect('/signup');
     });
   // insert username into users table
 });
