@@ -82,12 +82,50 @@ function(req, res, next) {
   });
 });
 
+app.get('/login', 
+function(req, res) {
+  res.render('login');
+});
+
+app.post('/login', 
+function(req, res) {
+
+});
+
+app.get('/signup', 
+function(req, res) {
+  res.render('signup');
+});
+
+app.post('/signup', 
+function(req, res) {
+  console.log(req.body);
+  // TO DO HASH PASSWORD BEFORE STORING
+  return Users.addUser(req.body)
+    .then(function(data) {
+      var userinfo = data[0];
+      res.status(201).send('you just signed up!');
+    })
+    .catch(function(err) {
+      console.log('Error!'); // TO DO
+      res.status(200).send('user already taken');
+    });
+  // insert username into users table
+});
+
+// .then(function(results) {
+//     var link = results[0];
+//     res.status(200).send(link);
+//   })
+
 /************************************************************/
 // Write your authentication routes here
 /************************************************************/
-
-
-
+// check if password matches
+  // if match
+    // next in middleware
+  // else
+    // res.redirect back to same page?
 /************************************************************/
 // Handle the wildcard route last - if all other routes fail
 // assume the route is a short code and try and handle it here.
