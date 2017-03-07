@@ -36,15 +36,16 @@ module.exports = function(db) {
       );'
     );
   })
-  // .then(function() {
-  //   return db.queryAsync('CREATE TABLE IF NOT EXISTS sessions (\
-  //     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,\
-  //     hash VARCHAR(20) NOT NULL,\
-  //     user_id INT NOT NULL,\
-  //     FOREIGN KEY(user_id) references users (id)\
-  //     );'
-  //   );
-  // })
+  .then(function() {
+    return db.queryAsync('CREATE TABLE IF NOT EXISTS sessions (\
+      id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,\
+      hash VARCHAR(40) NOT NULL,\
+      user_id INT,\
+      timestamp TIMESTAMP,\
+      FOREIGN KEY(user_id) references users (id)\
+      );'
+    );
+  })
 
   .error(function(err) {
     console.log(err);

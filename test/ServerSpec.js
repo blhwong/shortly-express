@@ -47,7 +47,7 @@ describe('', function() {
     /**************************************************************************************/
     /* TODO: If you create a new MySQL tables, add it to the tablenames collection below. */
     /**************************************************************************************/
-    var tablenames = ['links', 'clicks', 'users', 'sessions'];
+    var tablenames = ['links', 'clicks', 'sessions', 'users'];
 
     db.connect(function(err) {
       if (err) { return done(err); }
@@ -278,7 +278,10 @@ describe('', function() {
     });
   });
 
-  xdescribe('Sessions Schema:', function() {
+
+  
+
+  describe('Sessions Schema:', function() {
     it('contains a sessions table', function(done) {
       var queryString = 'SELECT * FROM sessions';
       db.query(queryString, function(err, results) {
