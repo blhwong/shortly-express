@@ -1,19 +1,14 @@
 var parseCookies = function(req, res, next) {
   console.log('C is for Cookie: ', req.headers.cookie);
-  // res.cookie({shortlyid: req.headers.cookie});
   var cookieString = req.headers.cookie;
   if (cookieString) {
     var cookieArray = cookieString.split(';');
-    console.log('A single: ', cookieArray);
+    // console.log('A single: ', cookieArray);
     cookieArray.forEach(function(cookie) {
       var hash = cookie.split('=');
-      console.log('hash', hash);
+      // console.log('hash', hash);
       req.cookies[hash[0].trim()] = hash[1];
     });
-    // var key = hash[0];
-    // console.log(typeof key);
-    // req.cookies = { key: hash[1]};
-    // req.cookies[ hash[0] ] = hash[1];
   }
   next();
 };
