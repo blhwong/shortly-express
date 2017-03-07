@@ -3,7 +3,7 @@ var utils = require('../lib/utility');
 
 // Write you user database model methods here
 
-var addUser = function(userParams) { 
+var insertId = function(userParams) { 
   console.log('addUser model');
 
   // TO DO HASH PASSWORD BEFORE STORING
@@ -19,6 +19,6 @@ var findUser = function(userParams) {
 };
 
 module.exports = {
-  addUser: addUser,
+  insertId: insertId,
   findUser: findUser
 };

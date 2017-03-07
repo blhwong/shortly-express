@@ -97,8 +97,9 @@ function(req, res) {
         console.log('password match');
         res.status(201).send('access granted');
       } else {
-        console.log('password not matching');
-        res.status(201).send('access denied');
+        console.log('password not matching'); // ideally separate for users not in system sending to signup and match incorrect
+        res.status(201).render('login');
+        // alert('Password not matching');
       }
     })
     .catch(function(err) {
@@ -116,7 +117,7 @@ app.post('/signup',
 function(req, res) {
   console.log(req.body);
   // TO DO HASH PASSWORD BEFORE STORING
-  return Users.addUser([req.body.username, req.body.password])
+  return Users.insertId([req.body.username, req.body.password])
     .then(function(data) {
       var userinfo = data[0];
       res.status(201).send('you just signed up!');
