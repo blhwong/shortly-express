@@ -89,7 +89,22 @@ function(req, res) {
 
 app.post('/login', 
 function(req, res) {
-
+  return Users.findUser([req.body.username, req.body.password])
+    .then(function(data) {
+      console.log('SELECT data', data[0]);
+      if (data[0].length) {
+        // password match
+        console.log('password match');
+        res.status(201).send('access granted');
+      } else {
+        console.log('password not matching');
+        res.status(201).send('access denied');
+      }
+    })
+    .catch(function(err) {
+      console.log('error', err);  
+      // we aren't sure how this would happen as we can't figure out how to pass in null
+    });  
 });
 
 app.get('/signup', 
@@ -101,7 +116,7 @@ app.post('/signup',
 function(req, res) {
   console.log(req.body);
   // TO DO HASH PASSWORD BEFORE STORING
-  return Users.addUser(req.body)
+  return Users.addUser([req.body.username, req.body.password])
     .then(function(data) {
       var userinfo = data[0];
       res.status(201).send('you just signed up!');
