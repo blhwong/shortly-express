@@ -91,16 +91,13 @@ app.post('/login',
 function(req, res) {
   return Users.findUser([req.body.username, req.body.password])
     .then(function(data) {
-      console.log('SELECT data', data[0]);
+      // console.log('SELECT data', data[0]);
       if (data[0].length) {
         // password match
-        console.log('password match');
-        // res.status(201).send('access granted');
         res.redirect('/');
       } else {
-        console.log('password not matching'); // ideally separate for users not in system sending to signup and match incorrect
-        // res.status(201).render('login');
-        // alert('Password not matching');
+        // password not matching
+        // ideally separate for users not in system sending to signup and match incorrect
         res.redirect('/login');
       }
     })

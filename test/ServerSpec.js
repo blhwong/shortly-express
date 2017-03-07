@@ -330,12 +330,12 @@ describe('', function() {
     });
   });
 
-  xdescribe('Express Middleware', function() {
+  describe('Express Middleware', function() {
     var cookieParser = require('../server/middleware/cookieParser.js');
     var sessionParser = require('../server/middleware/sessionParser.js');
 
     describe('Cookie Parser', function() {
-
+      console.log('in cookie parser');
       it('parses cookies and assigns an object of key-value pairs to a session property on the request', function() {
         var requestWithoutCookies = httpMocks.createRequest();
         var requestWithCookies = httpMocks.createRequest({
@@ -358,6 +358,7 @@ describe('', function() {
         });
 
         cookieParser(requestWithCookies, response, function() {
+          console.log('hello');
           var cookies = requestWithCookies.cookies;
           expect(cookies).to.be.an('object');
           expect(cookies).to.eql({ shortlyid: '8a864482005bcc8b968f2b18f8f7ea490e577b20' });
