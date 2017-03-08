@@ -92,6 +92,8 @@ function(req, res) {
 
 app.post('/login', 
 function(req, res) {
+  var username = req.body.username;
+  var password = req.body.password;
   return Users.findUser([req.body.username, req.body.password])
     .then(function(data) {
       // console.log('SELECT data', data[0]);

@@ -9,6 +9,10 @@ var insertSession = function(sessionParams) {
   return db.queryAsync(queryString, sessionParams);
 };
 
+var selectSession = function() {
+  var queryString = 'SELECT users_id FROM ';
+};
+
 module.exports = {
   insertSession: insertSession
 };

@@ -31,8 +31,9 @@ module.exports = function(db) {
       id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,\
       username VARCHAR(12) NOT NULL UNIQUE,\
       password VARCHAR(40) NOT NULL,\
+      salt VARCHAR(40),\
       timestamp TIMESTAMP,\
-      UNIQUE (username) \
+      UNIQUE (username)\
       );'
     );
   })
@@ -41,12 +42,11 @@ module.exports = function(db) {
       id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,\
       hash VARCHAR(40) NOT NULL,\
       user_id INT,\
-      timestamp TIMESTAMP,\
-      FOREIGN KEY(user_id) references users (id)\
+      timestamp TIMESTAMP\
       );'
     );
   })
-
+// FOREIGN KEY(user_id) references users (id)\
   .error(function(err) {
     console.log(err);
   });

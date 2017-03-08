@@ -6,12 +6,13 @@ var crypto = require('crypto');
 
 var insertId = function(userParams) { 
   // console.log('addUser model');
-
+  var salt = 0;
+  userParams.push(salt);
   var shasum = crypto.createHash('sha1');
   shasum.update(userParams[1]);
   userParams[1] = shasum.digest('hex');
-  var queryString = 'INSERT INTO users (username, password)\
-                      VALUES (?, ?)';
+  var queryString = 'INSERT INTO users (username, password, salt)\
+                      VALUES (?, ?, ?)';
   return db.queryAsync(queryString, userParams);
 };
 
