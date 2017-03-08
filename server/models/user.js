@@ -6,7 +6,7 @@ var crypto = require('crypto');
 
 var insertId = function(userParams) { 
   // console.log('addUser model');
-  var salt = 0;
+  var salt = '0';
   userParams.push(salt);
   var shasum = crypto.createHash('sha1');
   shasum.update(userParams[1]);

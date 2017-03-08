@@ -21,3 +21,7 @@ exports.isValidUrl = function(url) {
 // Add additional utility functions below
 /************************************************************/
 
+// exports.compareHash = function(currentAgent, storedHash, salt) {
+//   var currentHash = this.createHash(currentAgent, salt);
+//   return storedHash === currentHash;
+// };

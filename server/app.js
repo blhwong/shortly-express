@@ -21,8 +21,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Serve static files from ../public directory
 app.use(express.static(path.join(__dirname, '../public')));
 
-app.use(require('./middleware/cookieParser.js')); // some middleware 
-app.use(require('./middleware/sessionParser.js'));
+// app.use(require('./middleware/cookieParser.js')); // some middleware 
+// app.use(require('./middleware/sessionParser.js'));
 
 app.get('/', 
 function(req, res) {
@@ -119,6 +119,8 @@ function(req, res) {
 
 app.post('/signup', 
 function(req, res) {
+
+  console.log('post');
   // console.log(req.body);
   // TO DO HASH PASSWORD BEFORE STORING
   return Users.insertId([req.body.username, req.body.password])

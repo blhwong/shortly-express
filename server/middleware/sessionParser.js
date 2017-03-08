@@ -26,16 +26,51 @@ var createSession = function(req, res, next) {
   //   }
   //   console.log('fred', req);
   // }
-  var agent = req.get('User-Agent');
-  var hashedAgent = 1;
-  if (!req.cookies.shortlyid) {
-    Sessions.insertSession([hashedAgent, req.body.username]);
-    res.cookie('shortlyid', hashedAgent);
-    req.session = {hash: hashedAgent};
-  } else {
-    // select userid from sessions where hash = req.cookie.shortly
 
-  }
+
+
+
+
+
+
+
+
+  console.log('inside sessionParser');
+
+  // var agent = req.get('User-Agent') || 1;
+  // var hashedAgent = 1;
+  // console.log('agent', agent);
+  // if (req.body.username === undefined) { 
+  //   req.body.username === 'anonymous';
+  // }
+  // if (!req.cookies.shortlyid) {
+  //   // Sessions.insertSession([hashedAgent, req.body.username]);
+  //   res.cookie('shortlyid', hashedAgent);
+  //   req.session = {hash: hashedAgent};
+  // } else {
+  //   // select userid from sessions where hash = req.cookie.shortly
+  //   // get session
+  //     // if no session
+  //       // clear cookie and return session
+  //     // if yes session and doesn't match agent
+  //       // destory session
+  //       // clear cookie
+
+  // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //set request
 
   next();
 };
